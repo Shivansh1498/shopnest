@@ -1,0 +1,20 @@
+<mat-card class="min-w-72 w-72 py-2">
+  <img
+    mat-card-image
+    [src]="product.image"
+    [alt]="product.title"
+    class="min-h-40 h-40 object-contain"
+  />
+  <mat-card-content>
+    <p class="truncate cursor-default" [matTooltip]="product.title">
+      {{ product.title }}
+    </p>
+    <div class="flex justify-between">
+      <p>{{ product.price | currency }}</p>
+      <p>Rating: {{ product.rating.rate }}/5</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button color="primary" class="w-full">Add to cart</button>
+  </mat-card-actions>
+</mat-card>
