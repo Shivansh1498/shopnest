@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import cardData from '../../../data';
+import { Component, OnInit, inject } from '@angular/core';
 import { HomeCard } from '../models/home-card.model';
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +10,15 @@ import { ProductCardComponent } from '../product-card/product-card.component';
   imports: [ProductCardComponent, CommonModule],
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
-  dummyData: HomeCard[] = cardData;
+export class HomeComponent implements OnInit {
+  // Injecting Services
+  productService: ProductService = inject(ProductService);
+
+  cardData!: HomeCard[];
+
+  ngOnInit(): void {
+    this.productService.getAllProducts().subscribe((data) => {
+      this.cardData = data;
+    });
+  }
 }
