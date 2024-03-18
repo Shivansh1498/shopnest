@@ -1,0 +1,21 @@
+<mat-spinner *ngIf="!card" class="ms-auto me-auto mt-48"></mat-spinner>
+
+<div
+  class="flex flex-wrap justify-center gap-10 py-20 ms-auto me-auto"
+  *ngIf="card"
+>
+  <img
+    [src]="card.image"
+    [alt]="card.title"
+    class="object-contain w-80 mix-blend-multiply"
+  />
+  <div class="w-6/12 flex flex-col gap-5">
+    <h1 class="text-4xl">{{ card.title }}</h1>
+    <h2 class="text-2xl">{{ card.price | currency }}</h2>
+    <p class="text-xl">Rating: {{ card.rating.rate }}/5</p>
+    <p class="text-xl flex-wrap">
+      {{ card.description }}
+    </p>
+    <button mat-flat-button color="primary" class="w-36">Add to cart</button>
+  </div>
+</div>
